@@ -1,6 +1,6 @@
 const axios = require('axios');   //使用了 axios 的 get 函數來發送 GET 請求
 
-const url = "https://docs.google.com/document/d/1BpO8fYs93vFtzIBrWGykP33Dld5fi0-IVJYrPHsbCLE/edit";
+const url = "https://ec2-54-64-246-136.ap-northeast-1.compute.amazonaws.com/delay-clock";
 
 console.log("Async Function"); 
 
