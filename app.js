@@ -1,8 +1,10 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
-const bcrypt = require('bcrypt'); // 引入加密庫
 const app = express();
 const PORT = 3000;
+const mysql = require('mysql2/promise');
+const bcrypt = require('bcrypt'); // 引入加密庫
+
+
 
 app.use(express.json());
 
@@ -84,3 +86,5 @@ app.get('/users', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
