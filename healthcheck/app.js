@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const mysql = require('mysql2/promise');
-const bcrypt = require('bcrypt'); // 引入加密庫
-
-
 
 app.use(express.json());
 
@@ -16,12 +13,8 @@ const pool = mysql.createPool({
 });
 
 app.post('/users', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email } = req.body;
 
-  // 密碼加密
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // 正則表達式驗證
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const nameRegex = /^[a-zA-Z0-9]+$/;
 
@@ -31,7 +24,7 @@ app.post('/users', async (req, res) => {
 
   try {
     const connection = await pool.getConnection();
-    const [results] = await connection.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPassword]);
+    const [results] = await connection.query('INSERT INTO users (name, email) VALUES (?, ?)', [name, email]);
     connection.release();
     res.status(200).json({
       data: {
@@ -86,5 +79,3 @@ app.get('/users', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-

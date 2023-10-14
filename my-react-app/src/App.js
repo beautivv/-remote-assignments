@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import postData from './getPostData';
+import postData from './getPostData.js';
 import './App.css';
 
 const Post = () => {

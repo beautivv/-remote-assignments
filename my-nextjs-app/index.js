@@ -1,8 +1,9 @@
-// pages/index.js
-
-import React, { useState } from 'react';
-import postData from '../../getpostdata.js';
-import 'tailwindcss/tailwind.css';
+const React = require('react');
+const { useState } = require('react');
+const postData = require('./getpostdata.js');
+require('tailwindcss/base.css');
+require('tailwindcss/components.css');
+require('tailwindcss/utilities.css');
 
 const Home = () => {
   const [likedArticles, setLikedArticles] = useState([]);
@@ -30,4 +31,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+module.exports = Home;
